@@ -14,7 +14,7 @@ export default withNuxt(
   {
     rules: {
       'vue/multi-word-component-names': ['error', {
-        ignores: ['index', 'about'],
+        ignores: ['index', 'about', 'Button'],
       }],
     },
   },
