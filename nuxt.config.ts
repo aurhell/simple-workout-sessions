@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
+    '@formkit/auto-animate/nuxt',
   ],
   devtools: { enabled: true },
   compatibilityDate: '2024-11-01',
