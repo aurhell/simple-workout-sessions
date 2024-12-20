@@ -65,52 +65,12 @@ const getTotalTime = computed(() => {
 <template>
   <div class="flex h-screen flex-col items-center justify-center overflow-hidden">
     <div class="mb-12 text-2xl">
-      Simple workout sessions
+      Simple workout circuits
     </div>
     <form
       class="w-1/3 space-y-6"
       @submit="onSubmit"
     >
-      <FormField
-        v-slot="{ value }"
-        name="recovery"
-      >
-        <FormItem v-auto-animate>
-          <FormLabel>Récup</FormLabel>
-          <NumberField
-            class="gap-2"
-            :min="RECOVERY_MIN"
-            :max="RECOVERY_MAX"
-            :step="RECOVERY_STEPS"
-            :model-value="value"
-            :format-options="{
-              style: 'unit',
-              unit: 'second',
-            }"
-            @update:model-value="(v) => {
-              if (v) {
-                setFieldValue('recovery', v)
-              }
-              else {
-                setFieldValue('recovery', undefined)
-              }
-            }"
-          >
-            <NumberFieldContent>
-              <NumberFieldDecrement />
-              <FormControl>
-                <NumberFieldInput />
-              </FormControl>
-              <NumberFieldIncrement />
-            </NumberFieldContent>
-          </NumberField>
-          <FormDescription>
-            Temps de récupération en secondes entre chaque série.
-          </FormDescription>
-          <FormMessage />
-        </FormItem>
-      </FormField>
-
       <FormField
         v-slot="{ value }"
         name="roundNumber"
@@ -182,6 +142,47 @@ const getTotalTime = computed(() => {
           <FormMessage />
         </FormItem>
       </FormField>
+
+      <FormField
+        v-slot="{ value }"
+        name="recovery"
+      >
+        <FormItem v-auto-animate>
+          <FormLabel>Récup</FormLabel>
+          <NumberField
+            class="gap-2"
+            :min="RECOVERY_MIN"
+            :max="RECOVERY_MAX"
+            :step="RECOVERY_STEPS"
+            :model-value="value"
+            :format-options="{
+              style: 'unit',
+              unit: 'second',
+            }"
+            @update:model-value="(v) => {
+              if (v) {
+                setFieldValue('recovery', v)
+              }
+              else {
+                setFieldValue('recovery', undefined)
+              }
+            }"
+          >
+            <NumberFieldContent>
+              <NumberFieldDecrement />
+              <FormControl>
+                <NumberFieldInput />
+              </FormControl>
+              <NumberFieldIncrement />
+            </NumberFieldContent>
+          </NumberField>
+          <FormDescription>
+            Temps de récupération en secondes entre chaque série.
+          </FormDescription>
+          <FormMessage />
+        </FormItem>
+      </FormField>
+
       <div class="text-center">
         <div class="mb-12">
           Temps total : {{ getTotalTime }} secondes
